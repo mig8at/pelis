@@ -1,28 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
-import { updateHeader } from '../actions/view';
-import { viewState } from '../store/view';
-
-import { increment, decrement, reset } from '../actions/user';
-
+import { updateHeaderTitle } from '../actions/view';
+import globalState from '../store';
 
 
 export const viewReducer = createReducer(
-    viewState,
-    on(updateHeader, (state, header) => ({ ...state, header }))
+    globalState.view.header.title,
+    on(updateHeaderTitle, (state, { title }) => title)
 );
 
-export const initialState = 0;
-
-export const counterReducer = createReducer(
-    initialState,
-    on(increment, (state) => state + 1),
-    on(decrement, (state) => state - 1),
-    on(reset, (state) => 0)
-);
-
-
-export const moviesState: any[] = [];
-
-export const moviesReducer = createReducer(
-    moviesState
-);
