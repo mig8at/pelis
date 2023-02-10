@@ -3,35 +3,53 @@
     <span>Empowerment</span>
 
     <div class="menu">
-        <span class="item">Home</span>
-        <span class="item">TV</span>
+        <span (click)="getPopularMovies()" class="item">Home</span>
+        <span (click)="getPopularTV()" class="item">TV</span>
         <span class="item">My list</span>
         <span class="item">Lenguaje</span>
     </div>
 
     <span class="example-spacer"></span>
 
+    <div class="search">
+        <input (input)="inputSearchMovies($event.target)" type="text">
+        <mat-icon>search</mat-icon>
+    </div>
+
 
 
     <button mat-icon-button class="favorite-icon">
-        <mat-icon>favorite</mat-icon>
+        <mat-icon>account_circle</mat-icon>
     </button>
 
 </mat-toolbar>
 
 <div class="banner">
-    <img [src]="'https://image.tmdb.org/t/p/original/'+banner" alt="">
+    <img [src]="'https://image.tmdb.org/t/p/original/'+banner" alt="" loading="lazy">
     <div class="degrade"></div>
 </div>
 
-
-
 <main>
-
-
     <div class="movies">
         <div class="movie" *ngFor="let movie of movies$ | async">
             <img [src]="'https://image.tmdb.org/t/p/w500/'+movie.poster_path" alt="">
+
+            <div class="content">
+                <div class="options">
+                    <button (click)="openMovie(movie)" mat-icon-button>
+                        <mat-icon>play_arrow</mat-icon>
+                    </button>
+                    <button mat-icon-button>
+                        <mat-icon>favorite_border</mat-icon>
+                    </button>
+                    <button mat-icon-button>
+                        <mat-icon>thumb_up</mat-icon>
+                    </button>
+
+                </div>
+                <h3>{{movie.original_title}}</h3>
+            </div>
+
         </div>
     </div>
 </main>

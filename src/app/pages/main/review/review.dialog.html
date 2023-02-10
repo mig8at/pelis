@@ -1,0 +1,13 @@
+<div mat-dialog-content>
+  <div class="preview">
+    <img [src]="'https://image.tmdb.org/t/p/original/'+movie.backdrop_path" alt="" loading="lazy">
+    <h3>{{movie.title}}</h3>
+
+    <button class="init-movie" mat-button (click)="onNoClick()">
+      Play
+    </button>
+  </div>
+  <p>{{ movie.overview }}</p>
+
+
+</div>

@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { MovieEffects } from '../../state/effects/movies';
-
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -27,7 +27,7 @@ import { MovieEffects } from '../../state/effects/movies';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-
+    MatDialogModule,
 
     HttpClientModule,
     BrowserAnimationsModule,
