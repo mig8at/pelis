@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
+
 
 
 @Component({
@@ -8,18 +8,5 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'movies';
-
-  header: any
-
-  constructor(private store: Store<{ view: any, count: number }>) {
-    store.select('view').subscribe((data) => {
-      this.header = data.header;
-    });
-
-
-  }
-
-
 
 }

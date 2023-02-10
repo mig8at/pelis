@@ -19,3 +19,10 @@ export const counterReducer = createReducer(
     on(decrement, (state) => state - 1),
     on(reset, (state) => 0)
 );
+
+
+export const moviesState: any[] = [];
+
+export const moviesReducer = createReducer(
+    moviesState
+);
