@@ -10,8 +10,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
-import { EffectsModule } from '@ngrx/effects';
-import { MovieEffects } from '../../state/effects/movies';
 import { MatDialogModule } from '@angular/material/dialog';
 
 
@@ -32,7 +30,6 @@ import { MatDialogModule } from '@angular/material/dialog';
     HttpClientModule,
     BrowserAnimationsModule,
 
-    EffectsModule.forRoot([MovieEffects])
   ]
 })
 export class MainModule { }

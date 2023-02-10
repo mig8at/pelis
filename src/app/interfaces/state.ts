@@ -4,4 +4,5 @@ import { View } from "./view";
 export default interface AppState {
     view: View,
     movies: Movie[];
+    favorites: number[]
 }

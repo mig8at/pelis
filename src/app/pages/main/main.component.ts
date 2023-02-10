@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { firstValueFrom, map, Observable } from 'rxjs';
 import { Movie } from 'src/app/interfaces/movie';
 import AppState from '../../interfaces/state';
-import { getPopularMovies, getPopularTV, searchMovies } from '../../state/actions/movie';
+import { addFavorite, getPopularMovies, getPopularTV, searchMovies } from '../../state/actions/movie';
 import { MovieDialog } from './review/review.dialog';
 
 
@@ -18,11 +18,19 @@ export class MainComponent {
   bannerChange: any
   banner: string = ""
   movies$: Observable<any[]> = this.store.select(state => state.movies);
+  favorites$: Observable<number[]> = this.store.select(state => state.favorites);
+
 
   constructor(
     public dialog: MatDialog,
     private store: Store<AppState>) {
 
+  }
+
+  isFavorite(id: number) {
+    return this.favorites$.pipe(
+      map(favorites => favorites.some(fId => fId === id))
+    )
   }
 
   openMovie(movie: Movie) {
@@ -35,6 +43,10 @@ export class MainComponent {
       console.log('The dialog was closed');
       //this.animal = result;
     });
+  }
+
+  addFavorite(id: number) {
+    this.store.dispatch(addFavorite({ id }))
   }
 
   getPopularMovies() {

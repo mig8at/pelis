@@ -5,3 +5,5 @@ export const getPopularMovies = createAction('[Main Page] get popular movies');
 export const getPopularTV = createAction('[Main Page] get popular tv');
 export const searchMovies = createAction('[Main Page] searc movies', props<{ search: string }>());
 export const setPopularMovies = createAction('[Main Page] set popular movies', props<{ movies: Movie[] }>());
+
+export const addFavorite = createAction('[Main Page] add favorite', props<{ id: number }>());

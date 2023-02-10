@@ -1,5 +1,7 @@
 import AppState from "src/app/interfaces/state";
 
+
+
 const globalState: AppState = {
     view: {
         header: {
@@ -7,7 +9,9 @@ const globalState: AppState = {
             menu: ["Home", "Movies", "About"]
         }
     },
-    movies: []
+    movies: [],
+
+    favorites: JSON.parse(localStorage.getItem('favorites') || '[]')
 }
 
 export default globalState;

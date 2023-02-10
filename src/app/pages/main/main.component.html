@@ -3,10 +3,10 @@
     <span>Empowerment</span>
 
     <div class="menu">
-        <span (click)="getPopularMovies()" class="item">Home</span>
-        <span (click)="getPopularTV()" class="item">TV</span>
-        <span class="item">My list</span>
-        <span class="item">Lenguaje</span>
+        <span (click)="getPopularMovies()" class="menu__item">Home</span>
+        <span (click)="getPopularTV()" class="menu__item">TV</span>
+        <span class="menu__item">My list</span>
+        <span class="menu__item">Lenguaje</span>
     </div>
 
     <span class="example-spacer"></span>
@@ -31,16 +31,19 @@
 
 <main>
     <div class="movies">
-        <div class="movie" *ngFor="let movie of movies$ | async">
+        <div class="movies__movie" *ngFor="let movie of movies$ | async">
             <img [src]="'https://image.tmdb.org/t/p/w500/'+movie.poster_path" alt="">
 
-            <div class="content">
+            <div class="movies__movie__content">
                 <div class="options">
                     <button (click)="openMovie(movie)" mat-icon-button>
                         <mat-icon>play_arrow</mat-icon>
                     </button>
-                    <button mat-icon-button>
-                        <mat-icon>favorite_border</mat-icon>
+
+
+                    <button (click)="addFavorite(movie.id)" mat-icon-button>
+                        <mat-icon *ngIf="isFavorite(movie.id) | async">favorite</mat-icon>
+                        <mat-icon *ngIf="!(isFavorite(movie.id) | async)">favorite_border</mat-icon>
                     </button>
                     <button mat-icon-button>
                         <mat-icon>thumb_up</mat-icon>

@@ -1,7 +1,8 @@
-import { moviesReducer } from "./movie";
+import { favoritesReducer, moviesReducer } from "./movie";
 import { viewReducer } from "./view";
 
 export const ROOT_REDUCERS = {
     view: viewReducer,
-    movies: moviesReducer
+    movies: moviesReducer,
+    favorites: favoritesReducer
 }
