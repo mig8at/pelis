@@ -4,6 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { viewReducer, counterReducer } from '../reducers/view';
+
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -13,11 +20,19 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({
-      //count: counterReducer 
+      view: viewReducer,
+      count: counterReducer
     }),
-    StoreModule.forRoot({}, {})
+
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+
+
+    BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
